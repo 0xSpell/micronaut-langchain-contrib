@@ -1,0 +1,71 @@
+[versions]
+arrow = "2.1.2"
+coroutines = "1.10.2"
+detekt = "1.23.8"
+keycloak-admin = "26.0.3"
+kotlin = "2.2.0"
+ksp = "2.2.0-2.0.2"
+license-report = "2.9"
+log4j2 = "2.25.1"
+versions = "0.52.0"
+# when updating micronaut version, check which docker plugin version they use
+# https://github.com/micronaut-projects/micronaut-sql/blob/v5.8.2/gradle/libs.versions.toml
+micronaut = "4.9.2"
+hibernate = "6.6.12.Final" # TODO
+blockhound = "1.0.13.RELEASE"
+# when updating micronaut-plugin, check which docker plugin version they use
+# and set the docker value to the same version
+# https://github.com/micronaut-projects/micronaut-gradle-plugin/blob/master/gradle/libs.versions.toml
+micronaut-plugin = "4.5.4"
+docker = "9.4.0"
+posgres = "2.1"
+sentry-plugin = "5.8.0"
+sentry-kotlin-extensions = "8.18.0"
+shadow = "8.3.8"
+slugify = "3.0.7"
+spring-crypto = "6.5.2"
+transaction-api = "2.0.1"
+
+[libraries]
+kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
+micronaut-platform = { group = "io.micronaut.platform", name = "micronaut-platform", version.ref = "micronaut" }
+log4j2-platform = { group = "org.apache.logging.log4j", name = "log4j-bom", version.ref = "log4j2" }
+posgres-client = { group = "com.ongres.scram", name = "client", version.ref = "posgres" }
+detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref="detekt" }
+kotlin-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlin-coroutines-reactive = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-reactive", version.ref = "coroutines" }
+kotlin-coroutines-reactor = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-reactor", version.ref = "coroutines" }
+kotlin-coroutines-core-jvm = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core-jvm", version.ref = "coroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+kotlinx-coroutines-debug = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-debug", version.ref = "coroutines" }
+reactor-blockhound-junit = { module = "io.projectreactor.tools:blockhound-junit-platform", version.ref = "blockhound" }
+spring-crypto = { group = "org.springframework.security", name = "spring-security-crypto", version.ref = "spring-crypto" }
+sentry-coroutines = { group = "io.sentry", name = "sentry-kotlin-extensions", version.ref = "sentry-kotlin-extensions" }
+sentry-log4j2 = { group = "io.sentry", name = "sentry-log4j2", version.ref = "sentry-kotlin-extensions" }
+sentry-jdbc = { group = "io.sentry", name = "sentry-jdbc", version.ref = "sentry-kotlin-extensions" }
+sentry-okhttp = { group = "io.sentry", name = "sentry-okhttp", version.ref = "sentry-kotlin-extensions" }
+slugify = { group = "com.github.slugify", name = "slugify", version.ref = "slugify" }
+keycloak-admin = { group = "org.keycloak", name = "keycloak-admin-client", version.ref = "keycloak-admin" }
+arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
+arrow-fx-coroutines = { module = "io.arrow-kt:arrow-fx-coroutines", version.ref = "arrow" }
+hibernate-spatial = {module="org.hibernate.orm:hibernate-spatial", version.ref = "hibernate"}
+transaction-api = { module = "jakarta.transaction:jakarta.transaction-api", version.ref = "transaction-api" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-plugin-allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
+kotlin-plugin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
+kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+micronaut-application = { id = "io.micronaut.application", version.ref = "micronaut-plugin" }
+micronaut-docker = { id = "io.micronaut.docker", version.ref = "micronaut-plugin" }
+micronaut-minimal-application = { id = "io.micronaut.minimal.application", version.ref = "micronaut-plugin" }
+micronaut-test-resources = { id = "io.micronaut.test-resources", version.ref = "micronaut-plugin" }
+micronaut-library = { id = "io.micronaut.library", version.ref = "micronaut-plugin"}
+#micronaut-aot = { id = "io.micronaut.aot", version.ref = "micronaut-plugin" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+sentry = { id = "io.sentry.jvm.gradle", version.ref = "sentry-plugin" }
+license-report = { id = "com.github.jk1.dependency-license-report", version.ref = "license-report" }
+docker = { id = "com.bmuschko.docker-remote-api", version.ref = "docker" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
