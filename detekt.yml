@@ -1,0 +1,140 @@
+build:
+  maxIssues: 0
+  excludeCorrectable: false
+  weights:
+  # complexity: 2
+  # LongParameterList: 1
+  # style: 1
+  # comments: 1
+
+config:
+  validation: true
+  warningsAsErrors: false
+  checkExhaustiveness: false
+  # when writing own rules with new properties, exclude the property path e.g.: 'my_rule_set,.*>.*>[my_property]'
+  excludes: ''
+
+processors:
+  active: true
+  exclude:
+    - 'DetektProgressListener'
+  # - 'KtFileCountProcessor'
+  # - 'PackageCountProcessor'
+  # - 'ClassCountProcessor'
+  # - 'FunctionCountProcessor'
+  # - 'PropertyCountProcessor'
+  # - 'ProjectComplexityProcessor'
+  # - 'ProjectCognitiveComplexityProcessor'
+  # - 'ProjectLLOCProcessor'
+  # - 'ProjectCLOCProcessor'
+  # - 'ProjectLOCProcessor'
+  # - 'ProjectSLOCProcessor'
+  # - 'LicenseHeaderLoaderExtension'
+
+console-reports:
+  active: true
+  exclude:
+    - 'ProjectStatisticsReport'
+    - 'ComplexityReport'
+    - 'NotificationReport'
+    - 'FindingsReport'
+    - 'FileBasedFindingsReport'
+  #  - 'LiteFindingsReport'
+
+output-reports:
+  active: true
+  exclude:
+  # - 'TxtOutputReport'
+  # - 'XmlOutputReport'
+  # - 'HtmlOutputReport'
+  # - 'MdOutputReport'
+  # - 'SarifOutputReport'
+
+complexity:
+  active: true
+  # I think it helps to reconsider some lengthy methods
+  CognitiveComplexMethod:
+    active: true
+    threshold: 15
+  # I think it helps to reconsider some lengthy methods
+  CyclomaticComplexMethod:
+    active: true
+    threshold: 15
+    ignoreSingleWhenExpression: false
+    ignoreSimpleWhenEntries: false
+    ignoreNestingFunctions: false
+    nestingFunctions:
+      - 'also'
+      - 'apply'
+      - 'forEach'
+      - 'isNotNull'
+      - 'ifNull'
+      - 'let'
+      - 'run'
+      - 'use'
+      - 'with'
+
+performance:
+  active: true
+  # I keep forgetting sequences, so maybe this helps performance in places
+  CouldBeSequence:
+    active: true
+    threshold: 3
+
+style:
+  active: true
+  # doesn't really matter honestly
+  NewLineAtEndOfFile:
+    active: false
+  # I heard its good style and the IDE does it for you
+  NoTabs:
+    active: true
+  ForbiddenComment:
+    active: false
+    comments:
+      - reason: 'Forbidden FIXME todo marker in comment, please fix the problem.'
+        value: 'FIXME:'
+      - reason: 'Forbidden STOPSHIP todo marker in comment, please address the problem before shipping the code.'
+        value: 'STOPSHIP:'
+      - reason: 'Forbidden TODO todo marker in comment, please do the changes.'
+        value: 'TODO:'
+    allowedPatterns: ''
+  # added arrow core, otherwise these files will get super messy
+  WildcardImport:
+    excludeImports:
+      - 'java.util.*'
+      - 'arrow.core.*'
+      - 'arrow.core.raise.*'
+      - 'org.junit.jupiter.api.Assertions.*'
+      - 'org.junit.jupiter.api.*'
+
+formatting:
+  active: true
+  android: false
+  autoCorrect: true
+  NoWildcardImports:
+    active: false
+    excludeImports:
+      - 'java.util.*'
+      - 'arrow.core.**'
+      - 'org.junit.jupiter.api.Assertions.*'
+      - 'org.junit.jupiter.api.*'
+  # trailing commas are cool, they reduce diffs
+  TrailingCommaOnDeclarationSite:
+    active: true
+    autoCorrect: true
+    useTrailingCommaOnDeclarationSite: true
+  # I dislike this
+  FinalNewline:
+    active: false
+    autoCorrect: true
+    insertFinalNewLine: true
+
+# these two categories are not easily fixable throughout the codebase, so for now we disable them so that we can
+# at least get the fixes for the remaining code
+potential-bugs:
+  UnsafeCallOnNullableType:
+    active: false
+coroutines:
+  InjectDispatcher:
+    active: false
